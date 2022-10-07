@@ -8,10 +8,19 @@
           <h1 class="text-center">Registrar Empleado</h1>
           <form>
             <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Tipo documento</mat-label>
+              <mat-select [(ngModel)]="empleado.tipoId" required="">
+                <mat-option value="Cedula de Ciudadanía">Cedula de Ciudadanía</mat-option>
+                <mat-option value="Tarjeta de identidad">Tarjeta de identidad</mat-option>
+                <mat-option value="Cedula extranjera">Cedula extranjera</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
               <mat-label>Documento</mat-label>
               <input
                 required
                 name="id"
+                [(ngModel)]="empleado.id"
                 matInput
                 placeholder="Digite el documento del empleado"
               />
@@ -21,6 +30,7 @@
               <input
                 required
                 name="nombre"
+                [(ngModel)]="empleado.nombre"
                 matInput
                 placeholder="Digite el nombre del empleado"
               />
@@ -30,6 +40,7 @@
               <input
                 required
                 name="apellido"
+                [(ngModel)]="empleado.apellido"
                 matInput
                 placeholder="Digite el apellido del empleado"
               />
@@ -40,6 +51,7 @@
               type="date"
                 required
                 name="fechaNacimiento"
+                [(ngModel)]="empleado.fechaNacimiento"
                 matInput
                 placeholder="Digite la fecha de nacimiento"
               />
@@ -50,6 +62,7 @@
               type="date"
                 required
                 name="fechaExpedicionId"
+                [(ngModel)]="empleado.fechaExpedicionId"
                 matInput
                 placeholder="Digite la fecha de expedición del documento"
               />
@@ -60,33 +73,24 @@
               <input
                 required
                 name="nacionalidad"
+                [(ngModel)]="empleado.nacionalidad"
                 matInput
                 placeholder="Digite la nacionalidad del empleado"
               />
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
-              <mat-label>este va ser un select }SEXO</mat-label>
-              <input
-                required
-                name="username"
-                matInput
-                placeholder="Digite su nombre de usuario"
-              />
+              <mat-label>Sexo</mat-label>
+              <mat-select [(ngModel)]="empleado.sexo" required>
+                <mat-option value="masculino">Masculino</mat-option>
+                <mat-option value="femenino">Femenino</mat-option>
+              </mat-select>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
-              <mat-label>estye vas ser un select ESTADO  CIVIL</mat-label>
-              <input
-                required
-                name="username"
-                matInput
-                placeholder="Digite su nombre de usuario"
-              />
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Select</mat-label>
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+              <mat-label>Estado civil</mat-label>
+              <mat-select [(ngModel)]="empleado.estadoCivil" required>
+                <mat-option value="casado">Casado</mat-option>
+                <mat-option value="soltero">Soltero</mat-option>
+                <mat-option value="otro">Otro</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
@@ -94,6 +98,7 @@
               <input
                 required
                 name="NoCredito"
+                [(ngModel)]="empleado.NoCredito"
                 matInput
                 placeholder="Digite su nombre de usuario"
               />
@@ -103,6 +108,7 @@
               <input
                 required
                 name="direccion"
+                [(ngModel)]="empleado.direccion"
                 matInput
                 placeholder="Digite la dirección"
               />
@@ -112,6 +118,7 @@
               <input
                 required
                 name="ciudad"
+                [(ngModel)]="empleado.ciudad"
                 matInput
                 placeholder="Digite el nombre de la cuidad"
               />
@@ -121,15 +128,16 @@
               <input
                 required
                 name="telefono"
+                [(ngModel)]="empleado.telefono"
                 matInput
                 placeholder="Digite el telefono del empleado"
               />
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
               <mat-label>Email</mat-label>
-              <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+              <input type="email" matInput [(ngModel)]="empleado.correo" [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
               <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                Please enter a valid email address
+                Por favor ingrese un correo
               </mat-error>
               <mat-error *ngIf="emailFormControl.hasError('required')">
               El correo es <strong>requerido</strong>
@@ -139,7 +147,8 @@
               <mat-label>Profesión</mat-label>
               <input
                 required
-                name="prifesion"
+                name="profesion"
+                [(ngModel)]="empleado.profesion"
                 matInput
                 placeholder="Digite la profesión de empleado"
               />
@@ -149,6 +158,7 @@
               <input
                 required
                 name="primaSeguro"
+                [(ngModel)]="empleado.primaSeguro"
                 matInput
                 placeholder="Digite la prima del seguro"
               />
@@ -156,7 +166,7 @@
 
             <br /><br />
             <div class="container text-center">
-              <button mat-raised-button color="primary">Iniciar sesión</button>
+              <button mat-raised-button color="primary">Guardar</button>
               <button
                 type="reset"
                 style="margin-left: 20px"

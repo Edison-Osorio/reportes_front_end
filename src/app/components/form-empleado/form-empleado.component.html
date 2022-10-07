@@ -1,0 +1,174 @@
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-md-4 col-lg-4">
+        <mat-card>
+          <div class="container text-center">
+            <img src="./assets/img/login.png" width="100" height="100" />
+          </div>
+          <h1 class="text-center">Registrar Empleado</h1>
+          <form>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Documento</mat-label>
+              <input
+                required
+                name="id"
+                matInput
+                placeholder="Digite el documento del empleado"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input
+                required
+                name="nombre"
+                matInput
+                placeholder="Digite el nombre del empleado"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Apellido</mat-label>
+              <input
+                required
+                name="apellido"
+                matInput
+                placeholder="Digite el apellido del empleado"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input
+              type="date"
+                required
+                name="fechaNacimiento"
+                matInput
+                placeholder="Digite la fecha de nacimiento"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Fecha expedicion documento</mat-label>
+              <input
+              type="date"
+                required
+                name="fechaExpedicionId"
+                matInput
+                placeholder="Digite la fecha de expedición del documento"
+              />
+            </mat-form-field>
+            
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Nacionalidad</mat-label>
+              <input
+                required
+                name="nacionalidad"
+                matInput
+                placeholder="Digite la nacionalidad del empleado"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>este va ser un select }SEXO</mat-label>
+              <input
+                required
+                name="username"
+                matInput
+                placeholder="Digite su nombre de usuario"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>estye vas ser un select ESTADO  CIVIL</mat-label>
+              <input
+                required
+                name="username"
+                matInput
+                placeholder="Digite su nombre de usuario"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Select</mat-label>
+              <mat-select>
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Numero de credito</mat-label>
+              <input
+                required
+                name="NoCredito"
+                matInput
+                placeholder="Digite su nombre de usuario"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Dirección</mat-label>
+              <input
+                required
+                name="direccion"
+                matInput
+                placeholder="Digite la dirección"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Ciudad</mat-label>
+              <input
+                required
+                name="ciudad"
+                matInput
+                placeholder="Digite el nombre de la cuidad"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Telefono</mat-label>
+              <input
+                required
+                name="telefono"
+                matInput
+                placeholder="Digite el telefono del empleado"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+              El correo es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Profesión</mat-label>
+              <input
+                required
+                name="prifesion"
+                matInput
+                placeholder="Digite la profesión de empleado"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Prima del seguro</mat-label>
+              <input
+                required
+                name="primaSeguro"
+                matInput
+                placeholder="Digite la prima del seguro"
+              />
+            </mat-form-field>
+
+            <br /><br />
+            <div class="container text-center">
+              <button mat-raised-button color="primary">Iniciar sesión</button>
+              <button
+                type="reset"
+                style="margin-left: 20px"
+                mat-raised-button
+                color="accent"
+              >
+                Limpiar
+              </button>
+            </div>
+          </form>
+        </mat-card>
+           <div class="col-md-8 col-lg-9"></div>
+    </div>
+  </div>
+</div>

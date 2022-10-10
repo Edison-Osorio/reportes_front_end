@@ -91,11 +91,9 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Estado civil</mat-label>
-            <mat-select [(ngModel)]="beneficiario.empleado" [ngModelOptions]="{standalone:true}" required>
-              <mat-option  value="casado">Casado</mat-option>
-              <mat-option value="soltero">Soltero</mat-option>
-              <mat-option value="otro">Otro</mat-option>
+            <mat-label>Empleado</mat-label>
+            <mat-select [(ngModel)]="empleado.id" [ngModelOptions]="{standalone:true}" required>
+              <mat-option *ngFor="let employe of listEmpoye" value="{{employe.id}}">{{employe.id }} {{employe.nombre}} </mat-option>
             </mat-select>
           </mat-form-field>
           <br /><br />

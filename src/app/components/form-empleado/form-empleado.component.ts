@@ -1,21 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Empleado } from '../../models/Empleado';
 import { EmpleadoService } from '../../services/empleado.service';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form-empleado',
   templateUrl: './form-empleado.component.html',
   styleUrls: ['./form-empleado.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
 })
 export class FormEmpleadoComponent implements OnInit {
+  listEmpoyes!: Empleado[];
+
+  dataSource!:Empleado[];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
 
-  empleado: Empleado={
+  empleado: Empleado = {
     id: '',
     tipoId: '',
     nombre: '',
@@ -31,19 +54,30 @@ export class FormEmpleadoComponent implements OnInit {
     telefono: '',
     correo: '',
     profesion: '',
-    primaSeguro: ''
+    primaSeguro: '',
+  };
+
+  constructor(private empleadoService: EmpleadoService, private dialog:MatDialog) {}
+  
+  ngOnInit(): void {
+    this.listEmpoye()
+  }
+  
+    openDialog() {
+      this.dialog.open(FormEmpleadoComponent);
+    }
+
+  listEmpoye() {
+    this.empleadoService.listEmploye().subscribe((employe) => {
+      this.listEmpoyes = employe;
+      this.dataSource = employe;
+    });
   }
 
-
-  constructor(private empleadoService:EmpleadoService) {}
-
-  ngOnInit(): void {}
-
-  formSubmit(){
+  formSubmit() {
     if (this.empleado.id == 0 || this.empleado.id == null) {
-      
-      console.log("Hola que mas");
-      
+      console.log('Hola que mas');
+
       return;
     }
     if (this.empleado.tipoId == '' || this.empleado.tipoId == null) {
@@ -58,10 +92,13 @@ export class FormEmpleadoComponent implements OnInit {
     if (this.empleado.fechaExpedicionId == null) {
       return;
     }
-    if ( this.empleado.fechaNacimiento == null) {
+    if (this.empleado.fechaNacimiento == null) {
       return;
     }
-    if (this.empleado.nacionalidad == '' || this.empleado.nacionalidad == null) {
+    if (
+      this.empleado.nacionalidad == '' ||
+      this.empleado.nacionalidad == null
+    ) {
       return;
     }
     if (this.empleado.sexo == '' || this.empleado.sexo == null) {
@@ -95,19 +132,15 @@ export class FormEmpleadoComponent implements OnInit {
       return;
     }
 
-this.empleadoService.saveEmployee(this.empleado).subscribe(
-  res=>{
-    console.log(res);
-    Swal.fire('Guardado','Se guardo el empleado con exito!!','success')
-  },
-  err=>{
-    console.log('este es el erro ', err);
-    Swal.fire('Error','Error al guardar el empleado','error')
+    this.empleadoService.saveEmployee(this.empleado).subscribe(
+      (res) => {
+        console.log(res);
+        Swal.fire('Guardado', 'Se guardo el empleado con exito!!', 'success');
+      },
+      (err) => {
+        console.log('este es el erro ', err);
+        Swal.fire('Error', 'Error al guardar el empleado', 'error');
+      }
+    );
   }
-)
-
-  }
-
-
-
 }

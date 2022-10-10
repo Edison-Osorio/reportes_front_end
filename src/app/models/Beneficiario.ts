@@ -1,7 +1,7 @@
 import { Empleado } from './Empleado';
 export interface Beneficiario{
 
-  id:number,
+  id:number | string,
   nombre:string,
   apellido:string,
   porcentaje:string,

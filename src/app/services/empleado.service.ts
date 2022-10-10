@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Empleado } from '../models/Empleado';
 
 @Injectable({
@@ -10,7 +11,12 @@ export class EmpleadoService {
 
   constructor(private http: HttpClient) {}
 
-  saveEmployee(employe: Empleado) {
-    return this.http.post(`${this.url}/empleados`, employe);
+  listEmploye():Observable<Empleado[]>{
+
+  return this.http.get<Empleado[]>(`${this.url}/empleados`)
+  }
+
+  saveEmployee(employe: Empleado):Observable<Empleado> {
+    return this.http.post<Empleado>(`${this.url}/empleados`, employe);
   }
 }

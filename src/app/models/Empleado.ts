@@ -1,5 +1,5 @@
 export interface Empleado {
-  id: number,
+  id: number | string,
   tipoId: string,
   nombre:string, 
   apellido:string, 
@@ -8,7 +8,7 @@ export interface Empleado {
   nacionalidad:string,
   sexo:string,
   estadoCivil:string,
-  NoCredito:string,
+  noCredito:string,
   direccion:string,
   ciudad:string,
   telefono:string,
